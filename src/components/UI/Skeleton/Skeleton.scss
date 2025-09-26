@@ -1,0 +1,29 @@
+@import '../../../styles/abstracts';
+.skeleton {
+	background: linear-gradient(
+		90deg,
+		$skeleton-base-color 25%,
+		$skeleton-highlight-color 50%,
+		$skeleton-base-color 75%
+	);
+	background-size: 200% 100%;
+	animation: skeleton-loading 1.5s infinite;
+	display: inline-block;
+	&--text {
+		margin: 0.125rem 0;
+	}
+	&--rectangular {
+		// Default styling for rectangular variant
+	}
+	&--circular {
+		// Default styling for circular variant
+	}
+}
+@keyframes skeleton-loading {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}

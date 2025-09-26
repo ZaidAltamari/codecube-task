@@ -13,13 +13,14 @@ import {
 } from '../types/auth';
 import { DEMO_USERS, STORAGE_KEYS } from '../utils/constants';
 interface AuthAction {
-	type: 'LOGIN_START' | 'LOGIN_SUCCESS' | 'LOGIN_ERROR' | 'LOGOUT';
+	type: 'LOGIN_START' | 'LOGIN_SUCCESS' | 'LOGIN_ERROR' | 'LOGOUT' | 'INIT_COMPLETE';
 	payload?: any;
 }
 const initialState: AuthState = {
 	user: null,
 	isAuthenticated: false,
 	isLoading: false,
+	isInitializing: true,
 	error: null,
 };
 function authReducer(state: AuthState, action: AuthAction): AuthState {
@@ -28,6 +29,7 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
 			return {
 				...state,
 				isLoading: true,
+				isInitializing: false,
 			};
 		case 'LOGIN_SUCCESS':
 			return {
@@ -35,6 +37,7 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
 				user: action.payload,
 				isAuthenticated: true,
 				isLoading: false,
+				isInitializing: false,
 				error: null,
 			};
 		case 'LOGIN_ERROR':
@@ -43,6 +46,7 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
 				user: null,
 				isAuthenticated: false,
 				isLoading: false,
+				isInitializing: false,
 				error: action.payload,
 			};
 		case 'LOGOUT':
@@ -51,7 +55,13 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
 				user: null,
 				isAuthenticated: false,
 				isLoading: false,
+				isInitializing: false,
 				error: null,
+			};
+		case 'INIT_COMPLETE':
+			return {
+				...state,
+				isInitializing: false,
 			};
 		default:
 			return state;
@@ -107,7 +117,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 				dispatch({ type: 'LOGIN_SUCCESS', payload: user });
 			} catch {
 				localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
+				dispatch({ type: 'INIT_COMPLETE' });
 			}
+		} else {
+			dispatch({ type: 'INIT_COMPLETE' });
 		}
 	}, []);
 	const value: AuthContextType = {

@@ -3,12 +3,12 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Post } from '../../types/api';
 import { useTableSort } from '../../hooks/useTableSort';
 import { usePagination } from '../../hooks/usePagination';
-import { LoadingSpinner } from '../UI/LoadingSpinner/LoadingSpinner';
 import { ErrorMessage } from '../UI/ErrorMessage/ErrorMessage';
 import { Pagination } from '../UI/Pagination/Pagination';
 import { ConfirmationModal } from '../UI/ConfirmationModal/ConfirmationModal';
 import { EmptyState } from '../UI/EmptyState';
 import { Icon } from '../UI/Icon';
+import { TableSkeleton } from '../UI/TableSkeleton';
 import { getIcon } from '../../utils/iconMappings';
 import './PostsTable.scss';
 interface PostsTableProps {
@@ -114,10 +114,14 @@ export const PostsTable: React.FC<PostsTableProps> = ({
 								<span className='sort-icon'>
 									<Icon
 										name={getSortIcon(key)}
-										size="xs"
+										size='xs'
 										aria-label={
 											sortConfig.key === key
-												? `Sorted ${sortConfig.direction === 'asc' ? 'ascending' : 'descending'}`
+												? `Sorted ${
+														sortConfig.direction === 'asc'
+															? 'ascending'
+															: 'descending'
+												  }`
 												: 'Sort column'
 										}
 									/>
@@ -141,8 +145,8 @@ export const PostsTable: React.FC<PostsTableProps> = ({
 					aria-label={`Edit post: ${post.title}`}>
 					<Icon
 						name={getIcon('EDIT')}
-						size="sm"
-						aria-label="Edit"
+						size='sm'
+						aria-label='Edit'
 					/>
 				</button>
 				<button
@@ -152,8 +156,8 @@ export const PostsTable: React.FC<PostsTableProps> = ({
 					aria-label={`Delete post: ${post.title}`}>
 					<Icon
 						name={getIcon('DELETE')}
-						size="sm"
-						aria-label="Delete"
+						size='sm'
+						aria-label='Delete'
 					/>
 				</button>
 			</div>
@@ -162,9 +166,10 @@ export const PostsTable: React.FC<PostsTableProps> = ({
 	);
 	if (loading && !suppressInitialLoading) {
 		return (
-			<div className='table-loading'>
-				<LoadingSpinner />
-				<p>Loading posts...</p>
+			<div className='posts-table-container'>
+				<div className='table-wrapper'>
+					<TableSkeleton rows={ITEMS_PER_PAGE} />
+				</div>
 			</div>
 		);
 	}
@@ -181,9 +186,11 @@ export const PostsTable: React.FC<PostsTableProps> = ({
 	return (
 		<div className='posts-table-container'>
 			<div className='table-wrapper'>
-				{(posts.length > 0 || loading) && (
+				{loading && posts.length === 0 ? (
+					<TableSkeleton rows={ITEMS_PER_PAGE} />
+				) : (
 					<table
-						className='posts-table'
+						className={`posts-table ${loading ? 'loading' : ''}`}
 						role='table'
 						aria-label='Posts data table'>
 						{renderTableHeader()}

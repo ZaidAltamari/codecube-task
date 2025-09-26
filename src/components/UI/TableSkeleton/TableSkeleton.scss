@@ -1,0 +1,28 @@
+@import '../../../styles/abstracts';
+.table-skeleton {
+	.posts-table {
+		width: 100%;
+	}
+	.body-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+	.action-buttons {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+	}
+	.table-row {
+		height: 3.5rem;
+	}
+	td {
+		padding: 0.75rem;
+		vertical-align: middle;
+	}
+	th {
+		padding: 0.75rem;
+		text-align: left;
+		border-bottom: 1px solid $gray-200;
+	}
+}

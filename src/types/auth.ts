@@ -12,6 +12,7 @@ export interface AuthState {
 	user: User | null;
 	isAuthenticated: boolean;
 	isLoading: boolean;
+	isInitializing: boolean;
 	error: string | null;
 }
 export interface AuthContextType extends AuthState {

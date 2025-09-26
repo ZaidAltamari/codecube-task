@@ -23,6 +23,12 @@
 		.posts-table {
 			width: 100%;
 			border-collapse: collapse;
+			transition: opacity $transition-base;
+
+			&.loading {
+				opacity: 0.6;
+				pointer-events: none;
+			}
 			thead {
 				background: $white;
 				border-bottom: 2px solid $gray-100;

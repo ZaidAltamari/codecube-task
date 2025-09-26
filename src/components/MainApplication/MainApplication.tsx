@@ -1,28 +1,32 @@
+import React from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import {
-	LazyLoginForm,
-	LazyDashboard,
-	LazyLoadErrorBoundary,
-} from '../LazyComponents';
+import Dashboard from '../Dashboard/Dashboard';
+import LoginForm from '../Login/LoginForm';
+import { LoadingSpinner } from '../UI/LoadingSpinner';
 const MainApplicationContent: React.FC = () => {
-	const { isAuthenticated } = useAuth();
-	if (!isAuthenticated) {
-		return <LazyLoginForm />;
+	const { isAuthenticated, isInitializing } = useAuth();
+	if (isInitializing) {
+		return (
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					height: '100vh',
+					backgroundColor: '#f8fafc',
+				}}>
+				<LoadingSpinner
+					size='large'
+					text='Loading application...'
+				/>
+			</div>
+		);
 	}
-	return <LazyDashboard />;
+	if (!isAuthenticated) {
+		return <LoginForm />;
+	}
+	return <Dashboard />;
 };
 export const MainApplication: React.FC = () => {
-	return (
-		<LazyLoadErrorBoundary
-			fallback={
-				<div className='error-boundary'>
-					<h2>Something went wrong loading the application.</h2>
-					<button onClick={() => window.location.reload()}>
-						Reload page
-					</button>
-				</div>
-			}>
-			<MainApplicationContent />
-		</LazyLoadErrorBoundary>
-	);
+	return <MainApplicationContent />;
 };
