@@ -101,9 +101,8 @@ const Dashboard: React.FC = () => {
 								title='Logout'>
 								<Icon
 									name={getIcon('LOGOUT')}
-									size="sm"
-									color="currentColor"
-									aria-label="Logout"
+									size='sm'
+									aria-label='Logout'
 								/>
 								<span className='logout-text'>Logout</span>
 							</button>
@@ -127,9 +126,8 @@ const Dashboard: React.FC = () => {
 								<div className='search-icon'>
 									<Icon
 										name={getIcon('SEARCH')}
-										size="sm"
-										color="currentColor"
-										aria-label="Search icon"
+										size='sm'
+										aria-label='Search icon'
 									/>
 								</div>
 								<input
@@ -146,9 +144,8 @@ const Dashboard: React.FC = () => {
 										title='Clear search'>
 										<Icon
 											name={getIcon('CLOSE')}
-											size="sm"
-											color="currentColor"
-											aria-label="Clear search"
+											size='sm'
+											aria-label='Clear search'
 										/>
 									</button>
 								)}

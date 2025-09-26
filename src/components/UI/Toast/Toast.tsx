@@ -45,7 +45,6 @@ export const Toast: React.FC<ToastProps> = ({
 				<Icon
 					name={getIconName()}
 					size="sm"
-					color="currentColor"
 					aria-label={`${type} icon`}
 				/>
 			</div>
@@ -60,7 +59,6 @@ export const Toast: React.FC<ToastProps> = ({
 				<Icon
 					name={getIcon('CLOSE')}
 					size="sm"
-					color="currentColor"
 					aria-label="Close notification"
 				/>
 			</button>

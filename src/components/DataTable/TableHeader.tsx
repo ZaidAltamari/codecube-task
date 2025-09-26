@@ -25,7 +25,6 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
 							<Icon
 								name={getSortIcon('id')}
 								size="xs"
-								color="currentColor"
 								aria-label={
 									sortConfig.key === 'id'
 										? `Sorted ${sortConfig.direction === 'asc' ? 'ascending' : 'descending'}`

@@ -19,7 +19,6 @@ export const PostsActions: React.FC<PostsActionsProps> = ({ onCreatePost }) => {
 				<Icon
 					name={getIcon('ADD')}
 					size="sm"
-					color="currentColor"
 					aria-label="Add new post"
 				/>
 				<span className='add-text'>Add New Post</span>

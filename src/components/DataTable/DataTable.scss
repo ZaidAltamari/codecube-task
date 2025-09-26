@@ -120,16 +120,14 @@
 							font-size: $font-size-sm;
 							transition: $transition-base;
 							&.edit-button {
-								background: rgba($info-color, 0.1);
-								color: $info-color;
+								background: rgba($brand-primary, 0.1);
 								&:hover {
-									background: rgba($info-color, 0.2);
+									background: rgba($brand-primary, 0.2);
 									transform: scale(1.1);
 								}
 							}
 							&.delete-button {
 								background: rgba($error-color, 0.1);
-								color: $error-color;
 								&:hover {
 									background: rgba($error-color, 0.2);
 									transform: scale(1.1);

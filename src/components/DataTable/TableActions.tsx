@@ -32,7 +32,6 @@ export const TableActions: React.FC<TableActionsProps> = ({
 					<Icon
 						name={getIcon('EDIT')}
 						size="sm"
-						color="currentColor"
 						aria-label="Edit post"
 					/>
 				</button>
@@ -43,7 +42,6 @@ export const TableActions: React.FC<TableActionsProps> = ({
 					<Icon
 						name={getIcon('DELETE')}
 						size="sm"
-						color="currentColor"
 						aria-label="Delete post"
 					/>
 				</button>
