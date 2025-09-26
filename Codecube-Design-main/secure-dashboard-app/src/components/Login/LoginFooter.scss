@@ -1,0 +1,116 @@
+@import '../../styles/abstracts';
+.login-footer {
+	margin-top: $spacing-6;
+	&__divider {
+		position: relative;
+		text-align: center;
+		margin: $spacing-6 0 $spacing-4 0;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: $gray-200;
+		}
+	}
+	&__demo-accounts {
+		border-top: 1px solid $gray-200;
+		padding-top: $spacing-4;
+		.login-footer__demo-title {
+			font-size: $font-size-sm;
+			font-weight: $font-weight-semibold;
+			color: $gray-700;
+			margin: 0 0 $spacing-3 0;
+			text-align: center;
+		}
+	}
+	&__accounts-list {
+		display: flex;
+		flex-direction: column;
+		gap: $spacing-2;
+	}
+	&__demo-account {
+		@include flex-between;
+		align-items: center;
+		padding: $spacing-2 $spacing-3;
+		background: $gray-50;
+		border-radius: $border-radius-base;
+		font-size: $font-size-xs;
+		gap: $spacing-2;
+		@include respond-to(mobile) {
+			flex-direction: column;
+			gap: $spacing-1;
+			text-align: center;
+		}
+	}
+	&__demo-email {
+		color: $gray-800;
+		font-weight: $font-weight-semibold;
+		font-family: $font-family-mono;
+	}
+	&__demo-password {
+		color: $gray-600;
+		font-family: $font-family-mono;
+		background: rgba($gray-200, 0.5);
+		padding: $spacing-1 $spacing-2;
+		border-radius: $border-radius-sm;
+	}
+	&__demo-role {
+		font-weight: $font-weight-semibold;
+		font-size: $font-size-xs;
+		&--editor {
+			color: $success-color;
+		}
+		&--viewer {
+			color: $info-color;
+		}
+	}
+}
+.social-btn {
+	@include button-reset;
+	width: 40px;
+	height: 40px;
+	border-radius: 8px;
+	@include flex-center;
+	font-weight: $font-weight-bold;
+	font-size: $font-size-base;
+	transition: $transition-base;
+	cursor: pointer;
+	&--google {
+		background: #db4437;
+		color: $white;
+		&:hover {
+			background: darken(#db4437, 10%);
+		}
+	}
+	&--microsoft {
+		background: #00a1f1;
+		color: $white;
+		&:hover {
+			background: darken(#00a1f1, 10%);
+		}
+	}
+	&--yahoo {
+		background: #7b0099;
+		color: $white;
+		&:hover {
+			background: darken(#7b0099, 10%);
+		}
+	}
+	&--apple {
+		background: #000;
+		color: $white;
+		&:hover {
+			background: #333;
+		}
+	}
+	&--facebook {
+		background: #3b5998;
+		color: $white;
+		&:hover {
+			background: darken(#3b5998, 10%);
+		}
+	}
+}

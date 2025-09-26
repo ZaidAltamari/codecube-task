@@ -1,0 +1,280 @@
+@import '../../styles/abstracts';
+.dashboard {
+	min-height: 100vh;
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+.dashboard-header {
+	background: $white;
+	box-shadow: $shadow-sm;
+	border-bottom: 1px solid $gray-200;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	.header-content {
+		@include flex-between;
+		padding: $spacing-4 0;
+		@include respond-to(mobile) {
+			flex-direction: column;
+			gap: $spacing-3;
+			align-items: stretch;
+		}
+	}
+	.header-left {
+		@include flex-start;
+		.logo-section {
+			@include flex-start;
+			gap: $spacing-3;
+			align-items: center;
+			.dashboard-title {
+				font-size: $font-size-2xl;
+				font-weight: $font-weight-bold;
+				margin: 0;
+				color: $gray-800;
+				transition: $transition-base;
+				@include respond-to(mobile) {
+					font-size: $font-size-xl;
+				}
+				&:hover {
+					color: $primary-color;
+				}
+			}
+		}
+	}
+	.header-right {
+		@include flex-start;
+		gap: $spacing-4;
+		@include respond-to(mobile) {
+			justify-content: space-between;
+			align-items: center;
+		}
+		.user-info {
+			@include flex-start;
+			gap: $spacing-3;
+			padding: $spacing-2 $spacing-4;
+			background: $gray-50;
+			border-radius: $border-radius-xl;
+			@include respond-to(mobile) {
+				padding: $spacing-2 $spacing-3;
+				gap: $spacing-2;
+			}
+			.user-avatar {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: $primary-gradient;
+				color: $white;
+				@include flex-center;
+				font-weight: $font-weight-bold;
+				font-size: $font-size-lg;
+			}
+			.user-details {
+				display: flex;
+				flex-direction: column;
+				.username {
+					font-weight: $font-weight-semibold;
+					color: $gray-700;
+					font-size: $font-size-sm;
+				}
+				.user-role {
+					font-size: $font-size-xs;
+					font-weight: $font-weight-medium;
+					padding: 2px $spacing-2;
+					border-radius: $border-radius-sm;
+					text-transform: uppercase;
+					letter-spacing: 0.05em;
+					&.editor {
+						background: rgba($success-color, 0.1);
+						color: $success-color;
+					}
+					&.viewer {
+						background: rgba($info-color, 0.1);
+						color: $info-color;
+					}
+				}
+			}
+		}
+		.logout-button {
+			@include button-reset;
+			@include flex-start;
+			gap: $spacing-2;
+			padding: $spacing-2 $spacing-4;
+			border-radius: $border-radius-lg;
+			background: rgba($error-color, 0.1);
+			color: $error-color;
+			font-size: $font-size-sm;
+			font-weight: $font-weight-medium;
+			transition: $transition-base;
+			border: 1px solid transparent;
+			.logout-icon {
+				font-size: $font-size-base;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.logout-text {
+				font-weight: $font-weight-semibold;
+			}
+			&:hover {
+				background: rgba($error-color, 0.15);
+				border-color: rgba($error-color, 0.3);
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba($error-color, 0.2);
+			}
+			&:active {
+				transform: translateY(0);
+			}
+		}
+	}
+}
+.dashboard-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 $spacing-4;
+	@include respond-to(mobile) {
+		padding: 0 $spacing-3;
+	}
+}
+.dashboard-main {
+	padding: $spacing-8 0;
+	@include respond-to(mobile) {
+		padding: $spacing-6 0;
+	}
+}
+.content-header {
+	margin-bottom: $spacing-8;
+	text-align: center;
+	@include respond-to(mobile) {
+		margin-bottom: $spacing-6;
+	}
+	.section-title {
+		font-size: $font-size-3xl;
+		font-weight: $font-weight-bold;
+		color: $gray-800;
+		margin: 0 0 $spacing-2 0;
+		@include respond-to(mobile) {
+			font-size: $font-size-2xl;
+		}
+	}
+	.section-subtitle {
+		color: $gray-600;
+		font-size: $font-size-lg;
+		margin: 0;
+		@include respond-to(mobile) {
+			font-size: $font-size-base;
+		}
+	}
+}
+.table-section {
+	background: $white;
+	border-radius: $border-radius-xl;
+	box-shadow: $shadow-lg;
+	overflow: hidden;
+	border: 1px solid $gray-200;
+}
+.table-controls {
+	padding: $spacing-6;
+	border-bottom: 1px solid $gray-200;
+	background: $gray-50;
+	@include flex-between;
+	gap: $spacing-4;
+	@include respond-to(mobile) {
+		flex-direction: column;
+		align-items: stretch;
+		padding: $spacing-4;
+	}
+	.search-container {
+		position: relative;
+		flex: 1;
+		max-width: 450px;
+		background: $white;
+		border-radius: $border-radius-xl;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		border: 2px solid transparent;
+		transition: $transition-base;
+		&:focus-within {
+			border-color: $primary-color;
+			box-shadow: 0 4px 15px rgba($primary-color, 0.15);
+			transform: translateY(-1px);
+		}
+		@include respond-to(mobile) {
+			max-width: none;
+			margin-bottom: $spacing-3;
+		}
+		.search-input {
+			width: 100%;
+			padding: $spacing-3 $spacing-12 $spacing-3 $spacing-10;
+			border: none;
+			border-radius: $border-radius-xl;
+			font-size: $font-size-base;
+			background: transparent;
+			outline: none;
+			color: $gray-700;
+			&::placeholder {
+				color: $gray-400;
+				font-size: $font-size-sm;
+			}
+		}
+		.search-icon {
+			position: absolute;
+			left: $spacing-3;
+			top: 50%;
+			transform: translateY(-50%);
+			color: $gray-400;
+			font-size: $font-size-base;
+			pointer-events: none;
+			transition: $transition-base;
+		}
+		.search-clear {
+			position: absolute;
+			right: $spacing-3;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: $gray-200;
+			color: $gray-600;
+			border: none;
+			@include flex-center;
+			cursor: pointer;
+			font-size: $font-size-lg;
+			line-height: 1;
+			transition: $transition-base;
+			&:hover {
+				background: $gray-300;
+				color: $gray-700;
+				transform: translateY(-50%) scale(1.1);
+			}
+			&:active {
+				transform: translateY(-50%) scale(0.95);
+			}
+		}
+		&:focus-within {
+			.search-icon {
+				color: $primary-color;
+			}
+		}
+	}
+	.action-buttons {
+		@include flex-start;
+		gap: $spacing-3;
+		.add-button {
+			@include button-primary;
+			@include flex-start;
+			gap: $spacing-2;
+			white-space: nowrap;
+			&:hover {
+				box-shadow: 0 8px 25px rgba($success-color, 0.4);
+			}
+		}
+	}
+}
+@keyframes pulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+}

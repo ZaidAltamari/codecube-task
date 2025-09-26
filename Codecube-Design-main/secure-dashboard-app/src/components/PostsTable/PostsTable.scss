@@ -1,0 +1,207 @@
+@import '../../styles/abstracts';
+.posts-table-container {
+	.table-info {
+		margin-bottom: $spacing-4;
+		color: $gray-600;
+		font-size: $font-size-sm;
+		.results-count {
+			font-weight: $font-weight-medium;
+		}
+	}
+	.table-loading {
+		@include flex-column-center;
+		padding: $spacing-16 $spacing-8;
+		color: $gray-600;
+	}
+	.table-error {
+		padding: $spacing-8;
+	}
+	.table-wrapper {
+		background: $white;
+		border-radius: $border-radius-lg;
+		box-shadow: $shadow-lg;
+		overflow: hidden;
+		.posts-table {
+			width: 100%;
+			border-collapse: collapse;
+			thead {
+				background: $white;
+				border-bottom: 2px solid $gray-100;
+				th {
+					padding: $spacing-4;
+					text-align: left;
+					font-weight: $font-weight-semibold;
+					color: $gray-800;
+					font-size: $font-size-sm;
+					text-transform: uppercase;
+					letter-spacing: 0.05em;
+					white-space: nowrap;
+					&.sortable {
+						cursor: pointer;
+						user-select: none;
+						transition: $transition-base;
+						&:hover {
+							background: rgba($primary-color, 0.05);
+						}
+						&.active {
+							background: rgba($primary-color, 0.1);
+							color: $primary-color;
+							.sort-icon {
+								color: $primary-color;
+							}
+						}
+						.header-content {
+							@include flex-between;
+							gap: $spacing-2;
+							align-items: center;
+							.sort-icon {
+								opacity: 0.6;
+								transition: $transition-fast;
+								font-size: $font-size-xs;
+							}
+						}
+						&:hover .sort-icon,
+						&.active .sort-icon {
+							opacity: 1;
+						}
+					}
+					&.actions-column {
+						width: 120px;
+						text-align: center;
+					}
+				}
+			}
+			tbody {
+				tr {
+					border-bottom: 1px solid $gray-200;
+					transition: $transition-base;
+					&:hover {
+						background: rgba($primary-color, 0.02);
+					}
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+				td {
+					padding: $spacing-4;
+					color: $gray-800;
+					font-size: $font-size-sm;
+					vertical-align: top;
+					&.id-cell {
+						width: 80px;
+						font-weight: $font-weight-semibold;
+						color: $gray-600;
+					}
+					&.user-id-cell {
+						width: 100px;
+						color: $gray-600;
+					}
+					&.title-cell {
+						font-weight: $font-weight-medium;
+						.title-content {
+							line-height: 1.4;
+						}
+					}
+					&.body-cell {
+						.body-content {
+							line-height: 1.4;
+							color: $gray-600;
+						}
+					}
+					&.actions-cell {
+						text-align: center;
+						.action-buttons {
+							@include flex-center;
+							gap: $spacing-2;
+							button {
+								@include button-reset;
+								padding: $spacing-2;
+								border-radius: $border-radius-sm;
+								transition: $transition-base;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								font-size: $font-size-base;
+								&:hover {
+									transform: translateY(-1px);
+									box-shadow: $shadow-sm;
+								}
+								&:active {
+									transform: translateY(0);
+								}
+								&.edit-button {
+									color: $primary-color;
+									background: rgba($primary-color, 0.1);
+									&:hover {
+										background: rgba($primary-color, 0.15);
+									}
+								}
+								&.delete-button {
+									color: $error-color;
+									background: rgba($error-color, 0.1);
+									&:hover {
+										background: rgba($error-color, 0.15);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@include respond-to(tablet) {
+	.posts-table-container {
+		.table-wrapper {
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			.posts-table {
+				min-width: 800px;
+				thead th {
+					padding: $spacing-3;
+					font-size: $font-size-xs;
+				}
+				tbody td {
+					padding: $spacing-3;
+					font-size: $font-size-xs;
+					&.title-cell .title-content,
+					&.body-cell .body-content {
+						max-width: 200px;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	}
+}
+@include respond-to(mobile) {
+	.posts-table-container {
+		.table-wrapper {
+			.posts-table {
+				min-width: 600px;
+				thead th {
+					padding: $spacing-2;
+					font-size: $font-size-xs;
+				}
+				tbody td {
+					padding: $spacing-2;
+					font-size: $font-size-xs;
+					&.title-cell .title-content,
+					&.body-cell .body-content {
+						max-width: 150px;
+					}
+					&.actions-cell .action-buttons {
+						gap: $spacing-1;
+						button {
+							padding: $spacing-1;
+							font-size: $font-size-sm;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,105 @@
+@import '../../styles/abstracts';
+.post-form {
+	width: 100%;
+	.form-group {
+		margin-bottom: $spacing-5;
+		.form-label {
+			display: block;
+			color: $gray-700;
+			font-weight: $font-weight-semibold;
+			margin-bottom: $spacing-2;
+			font-size: $font-size-sm;
+		}
+		.form-input,
+		.form-textarea {
+			@include input-base;
+			&.error {
+				border-color: $error-color;
+				box-shadow: 0 0 0 3px rgba($error-color, 0.1);
+			}
+		}
+		.form-textarea {
+			min-height: 120px;
+			resize: vertical;
+			font-family: $font-family-base;
+			line-height: 1.5;
+		}
+		.error-message {
+			display: block;
+			color: $error-color;
+			font-size: $font-size-xs;
+			margin-top: $spacing-1;
+			animation: slideInError 0.3s ease;
+		}
+	}
+	.form-actions {
+		@include flex-between;
+		gap: $spacing-3;
+		margin-top: $spacing-6;
+		padding-top: $spacing-4;
+		border-top: 1px solid $gray-200;
+		@include respond-to(mobile) {
+			flex-direction: column-reverse;
+		}
+		.cancel-button {
+			@include button-reset;
+			padding: $spacing-3 $spacing-6;
+			border: 2px solid $gray-300;
+			border-radius: $border-radius-lg;
+			color: $gray-600;
+			font-weight: $font-weight-semibold;
+			transition: $transition-base;
+			@include respond-to(mobile) {
+				width: 100%;
+			}
+			&:hover:not(:disabled) {
+				border-color: $gray-400;
+				background: $gray-50;
+			}
+			&:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+		}
+		.save-button {
+			@include button-primary;
+			position: relative;
+			@include respond-to(mobile) {
+				width: 100%;
+			}
+			&.loading {
+				pointer-events: none;
+			}
+			.loading-content {
+				@include flex-center;
+				gap: $spacing-2;
+				.spinner {
+					width: 16px;
+					height: 16px;
+					border: 2px solid rgba($white, 0.3);
+					border-top: 2px solid $white;
+					border-radius: 50%;
+					animation: spin 1s linear infinite;
+				}
+			}
+		}
+	}
+}
+@keyframes slideInError {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

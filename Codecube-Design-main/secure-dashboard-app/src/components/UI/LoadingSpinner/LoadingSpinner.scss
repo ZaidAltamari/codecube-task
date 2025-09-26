@@ -1,0 +1,63 @@
+@import '../../../styles/abstracts';
+.loading-spinner {
+	@include flex-column-center;
+	gap: $spacing-2;
+	&__ring {
+		border-radius: 50%;
+		border-style: solid;
+		border-color: currentColor transparent transparent transparent;
+		animation: spin 1.2s linear infinite;
+	}
+	&__text {
+		font-size: $font-size-sm;
+		color: currentColor;
+		opacity: 0.8;
+		text-align: center;
+	}
+	&__overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba($white, 0.9);
+		backdrop-filter: blur(2px);
+		z-index: $z-index-modal;
+		@include flex-center;
+	}
+	&--small {
+		.loading-spinner__ring {
+			width: 20px;
+			height: 20px;
+			border-width: 2px;
+		}
+		.loading-spinner__text {
+			font-size: $font-size-xs;
+		}
+	}
+	&--medium {
+		.loading-spinner__ring {
+			width: 40px;
+			height: 40px;
+			border-width: 3px;
+		}
+	}
+	&--large {
+		.loading-spinner__ring {
+			width: 60px;
+			height: 60px;
+			border-width: 4px;
+		}
+		.loading-spinner__text {
+			font-size: $font-size-base;
+		}
+	}
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

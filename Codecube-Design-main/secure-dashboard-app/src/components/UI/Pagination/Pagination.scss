@@ -1,0 +1,125 @@
+@import '../../../styles/abstracts';
+.pagination {
+	@include flex-between;
+	align-items: center;
+	margin-top: $spacing-6;
+	padding: $spacing-4;
+	background: $white;
+	border-radius: $border-radius-lg;
+	border: 1px solid $gray-200;
+	.pagination-info {
+		color: $gray-600;
+		font-size: $font-size-sm;
+		font-weight: $font-weight-medium;
+	}
+	.pagination-controls {
+		@include flex-center;
+		gap: $spacing-1;
+	}
+	.pagination-btn {
+		@include button-reset;
+		padding: $spacing-2 $spacing-3;
+		border: 1px solid $gray-300;
+		border-radius: $border-radius-base;
+		background: $white;
+		color: $gray-700;
+		font-size: $font-size-sm;
+		font-weight: $font-weight-medium;
+		transition: $transition-base;
+		min-width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&:hover:not(:disabled) {
+			background: $gray-50;
+			border-color: $gray-400;
+			color: $gray-900;
+		}
+		&:focus {
+			outline: 2px solid $primary-color;
+			outline-offset: 2px;
+		}
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+			color: $gray-400;
+		}
+		&--active {
+			background: $primary-color !important;
+			border-color: $primary-color !important;
+			color: $white !important;
+			font-weight: $font-weight-bold;
+			&:hover {
+				background: #5a6fd8 !important;
+				border-color: #5a6fd8 !important;
+				color: $white !important;
+			}
+		}
+		&--nav {
+			font-size: $font-size-lg;
+			font-weight: normal;
+		}
+		&--page {
+			font-weight: $font-weight-semibold;
+		}
+	}
+	.pagination-pages {
+		@include flex-center;
+		gap: $spacing-1;
+		margin: 0 $spacing-2;
+		.pagination-btn--page.pagination-btn--active {
+			background: $primary-color !important;
+			border-color: $primary-color !important;
+			color: $white !important;
+			font-weight: $font-weight-bold !important;
+			&:hover {
+				background: #5a6fd8 !important;
+				border-color: #5a6fd8 !important;
+				color: $white !important;
+			}
+		}
+	}
+	.pagination-dots {
+		padding: $spacing-2;
+		color: $gray-500;
+		font-weight: $font-weight-medium;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 40px;
+		height: 40px;
+	}
+}
+@include respond-to(mobile) {
+	.pagination {
+		flex-direction: column;
+		gap: $spacing-3;
+		padding: $spacing-3;
+		.pagination-info {
+			order: 2;
+			text-align: center;
+			font-size: $font-size-xs;
+		}
+		.pagination-controls {
+			order: 1;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.pagination-pages {
+			margin: 0;
+			gap: $spacing-1;
+			.pagination-btn--page {
+				min-width: 32px;
+				height: 32px;
+				padding: $spacing-1;
+				font-size: $font-size-xs;
+			}
+		}
+		.pagination-btn--nav {
+			min-width: 36px;
+			height: 32px;
+			padding: $spacing-1 $spacing-2;
+		}
+	}
+}

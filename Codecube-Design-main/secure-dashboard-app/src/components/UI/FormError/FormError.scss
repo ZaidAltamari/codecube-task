@@ -1,0 +1,86 @@
+@import '../../../styles/abstracts';
+.form-error {
+	animation: slideInError 0.3s ease;
+	&__content {
+		@include flex-start;
+		gap: $spacing-2;
+		padding: $spacing-3;
+		border-radius: $border-radius-base;
+		font-size: $font-size-sm;
+		line-height: 1.4;
+	}
+	&__icon {
+		flex-shrink: 0;
+		font-size: $font-size-base;
+	}
+	&__message {
+		flex: 1;
+	}
+	&__dismiss {
+		@include button-reset;
+		flex-shrink: 0;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		@include flex-center;
+		font-size: $font-size-xs;
+		opacity: 0.7;
+		transition: $transition-base;
+		&:hover {
+			opacity: 1;
+			background: rgba($white, 0.2);
+		}
+	}
+	&--field {
+		.form-error__content {
+			color: $error-color;
+			background: rgba($error-color, 0.05);
+			border: 1px solid rgba($error-color, 0.2);
+		}
+		.form-error__dismiss {
+			color: $error-color;
+		}
+	}
+	&--form {
+		.form-error__content {
+			color: $error-color;
+			background: rgba($error-color, 0.1);
+			border: 1px solid rgba($error-color, 0.3);
+			border-left: 4px solid $error-color;
+		}
+		.form-error__dismiss {
+			color: $error-color;
+		}
+	}
+	&--global {
+		position: fixed;
+		top: $spacing-4;
+		right: $spacing-4;
+		z-index: $z-index-modal + 1;
+		max-width: 400px;
+		box-shadow: $shadow-lg;
+		.form-error__content {
+			color: $white;
+			background: $error-color;
+			border: none;
+		}
+		.form-error__dismiss {
+			color: $white;
+		}
+		@include respond-to(mobile) {
+			left: $spacing-4;
+			right: $spacing-4;
+			max-width: none;
+		}
+	}
+}
+@keyframes slideInError {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

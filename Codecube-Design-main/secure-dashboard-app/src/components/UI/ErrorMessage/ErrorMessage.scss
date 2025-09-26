@@ -1,0 +1,59 @@
+@import '../../../styles/abstracts';
+.error-message {
+	@include flex-start;
+	gap: $spacing-4;
+	background: rgba($error-color, 0.05);
+	border: 1px solid rgba($error-color, 0.2);
+	border-radius: $border-radius-lg;
+	padding: $spacing-6;
+	text-align: left;
+	.error-icon {
+		font-size: 2rem;
+		flex-shrink: 0;
+	}
+	.error-content {
+		flex: 1;
+		h3 {
+			color: $error-color;
+			font-size: $font-size-lg;
+			font-weight: $font-weight-semibold;
+			margin: 0 0 $spacing-2 0;
+		}
+		p {
+			color: $gray-600;
+			margin: 0 0 $spacing-4 0;
+			line-height: 1.5;
+		}
+		.retry-button {
+			@include button-reset;
+			background: rgba($error-color, 0.1);
+			color: $error-color;
+			padding: $spacing-2 $spacing-4;
+			border-radius: $border-radius-base;
+			font-weight: $font-weight-medium;
+			transition: $transition-base;
+			@include flex-start;
+			gap: $spacing-2;
+			&:hover {
+				background: rgba($error-color, 0.2);
+				transform: translateY(-1px);
+			}
+		}
+	}
+	@include respond-to(mobile) {
+		flex-direction: column;
+		text-align: center;
+		padding: $spacing-4;
+		.error-icon {
+			font-size: 1.5rem;
+		}
+		.error-content {
+			h3 {
+				font-size: $font-size-base;
+			}
+			p {
+				font-size: $font-size-sm;
+			}
+		}
+	}
+}

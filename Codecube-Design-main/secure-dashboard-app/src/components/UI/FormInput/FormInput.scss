@@ -1,0 +1,93 @@
+@import '../../../styles/abstracts';
+.form-input-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: $spacing-2;
+	width: 100%;
+	margin-bottom: $spacing-4;
+}
+.form-input {
+	&__label {
+		display: block;
+		color: $gray-700;
+		font-weight: $font-weight-semibold;
+		margin-bottom: $spacing-2;
+		font-size: $font-size-sm;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	&__container {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	&__icon {
+		position: absolute;
+		right: $spacing-3;
+		color: $gray-400;
+		font-size: $font-size-lg;
+		pointer-events: none;
+		z-index: 1;
+	}
+	&__loading-indicator {
+		position: absolute;
+		right: $spacing-3;
+		z-index: 1;
+	}
+	&__help {
+		display: block;
+		color: $gray-500;
+		font-size: $font-size-xs;
+		margin-top: $spacing-1;
+	}
+	&__error {
+		display: block;
+		color: $error-color;
+		font-size: $font-size-xs;
+		margin-top: $spacing-1;
+		animation: slideInError 0.3s ease;
+	}
+}
+.form-input {
+	@include input-base;
+	width: 100%;
+	&--error {
+		border-color: $error-color;
+		box-shadow: 0 0 0 3px rgba($error-color, 0.1);
+	}
+	&--loading {
+		padding-right: 3rem;
+		cursor: wait;
+	}
+	&:focus {
+		transform: translateY(-1px);
+	}
+}
+.spinner {
+	&--small {
+		width: 16px;
+		height: 16px;
+		border: 2px solid rgba($primary-color, 0.3);
+		border-top: 2px solid $primary-color;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+}
+@keyframes slideInError {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

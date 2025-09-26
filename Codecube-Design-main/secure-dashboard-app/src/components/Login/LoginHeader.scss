@@ -1,0 +1,40 @@
+@import '../../styles/abstracts';
+.login-header {
+	text-align: center;
+	margin-bottom: $spacing-8;
+	&__logo {
+		margin-bottom: $spacing-4;
+	}
+	&__logo-icon {
+		font-size: 3rem;
+		margin-bottom: $spacing-4;
+		animation: pulse 2s ease-in-out infinite;
+	}
+	&__title {
+		color: $gray-800;
+		font-size: $font-size-4xl;
+		font-weight: $font-weight-bold;
+		margin: 0 0 $spacing-2 0;
+		@include text-gradient;
+		@include respond-to(mobile) {
+			font-size: $font-size-3xl;
+		}
+	}
+	&__subtitle {
+		color: $gray-600;
+		font-size: $font-size-lg;
+		margin: 0;
+		@include respond-to(mobile) {
+			font-size: $font-size-base;
+		}
+	}
+}
+@keyframes pulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+}
