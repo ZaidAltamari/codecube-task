@@ -6,6 +6,7 @@ interface LoadingSpinnerProps {
 	text?: string;
 	overlay?: boolean;
 	className?: string;
+	layout?: 'vertical' | 'horizontal';
 }
 export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 	size = 'medium',
@@ -13,10 +14,11 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 	text,
 	overlay = false,
 	className = '',
+	layout = 'vertical',
 }) => {
 	const content = (
 		<div
-			className={`loading-spinner loading-spinner--${size} ${className}`}
+			className={`loading-spinner loading-spinner--${size} loading-spinner--${layout} ${className}`}
 			style={{ color }}>
 			<div className='loading-spinner__ring'></div>
 			{text && <div className='loading-spinner__text'>{text}</div>}

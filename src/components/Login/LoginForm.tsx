@@ -119,6 +119,7 @@ export const LoginForm: React.FC = () => {
 									<LoadingSpinner
 										size='small'
 										text='Signing in...'
+										layout='horizontal'
 									/>
 								) : (
 									'Login'

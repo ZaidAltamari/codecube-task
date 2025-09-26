@@ -2,6 +2,11 @@
 .loading-spinner {
 	@include flex-column-center;
 	gap: $spacing-2;
+	&--horizontal {
+		@include flex-center;
+		flex-direction: row;
+		gap: $spacing-2;
+	}
 	&__ring {
 		border-radius: 50%;
 		border-style: solid;

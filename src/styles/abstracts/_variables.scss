@@ -1,11 +1,7 @@
 // Brand Colors
 $brand-primary: #667eea;
 $brand-secondary: #764ba2;
-$brand-gradient: linear-gradient(
-	135deg,
-	#{$brand-primary} 0%,
-	#{$brand-secondary} 100%
-);
+$brand-gradient: #667eea;
 // Primary Colors
 $primary-color: $brand-primary;
 $primary-gradient: $brand-gradient;
